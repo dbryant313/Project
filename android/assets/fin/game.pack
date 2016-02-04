@@ -1,0 +1,68 @@
+
+game.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+blank
+  rotate: false
+  xy: 0, 0
+  size: 300, 480
+  orig: 300, 480
+  offset: 0, 0
+  index: -1
+lizard
+  rotate: false
+  xy: 301, 0
+  size: 300, 480
+  orig: 300, 480
+  offset: 0, 0
+  index: -1
+paper
+  rotate: false
+  xy: 602, 0
+  size: 300, 480
+  orig: 300, 480
+  offset: 0, 0
+  index: -1
+rock
+  rotate: false
+  xy: 903, 0
+  size: 300, 480
+  orig: 300, 480
+  offset: 0, 0
+  index: -1
+scissors
+  rotate: false
+  xy: 1204, 0
+  size: 300, 480
+  orig: 300, 480
+  offset: 0, 0
+  index: -1
+spock
+  rotate: false
+  xy: 1505, 0
+  size: 300, 480
+  orig: 300, 480
+  offset: 0, 0
+  index: -1
+mainMenuButton
+  rotate: false
+  xy: 1806, 446
+  size: 195, 34
+  orig: 195, 34
+  offset: 0, 0
+  index: -1
+playAgainButton
+  rotate: false
+  xy: 1806, 406
+  size: 184, 39
+  orig: 184, 39
+  offset: 0, 0
+  index: -1
+playGameButton
+  rotate: false
+  xy: 1806, 364
+  size: 172, 41
+  orig: 172, 41
+  offset: 0, 0
+  index: -1
