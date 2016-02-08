@@ -24,18 +24,17 @@ public class Main extends Game {
 	AboutScreen aboutScreen;
 	RulesScreen rulesScreen;
 	AbstractScreen currentScreen;
+	AbstractScreen previousScreen;
 	
 	//--Game assets
 	TextureAtlas gameAtlas;
-	Button playButton;
-	Button rulesButton;
-	Button aboutButton;
-	Button closeButton;
-	
 	Sound clickSound;
 	
 	
 	float delta;
+	//
+	final int WIDTH = 800;
+	final int HEIGHT = 640;
 	
 	@Override
 	public void create() {
@@ -43,18 +42,19 @@ public class Main extends Game {
 		
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 600, 800);
+		camera.setToOrtho(false, WIDTH, HEIGHT);
 		camera.update();
-		viewport = new StretchViewport(600, 800, camera);
-		viewport.apply();
+		viewport = new StretchViewport(WIDTH, HEIGHT, camera);
 		
 		assetMgr.load("game.pack", TextureAtlas.class);
 		assetMgr.finishLoading();
 		
+		
 		startScreen = new StartScreen(this);
 		gameScreen = new GameScreen(this);
 		aboutScreen = new AboutScreen(this);
-		
+		rulesScreen = new RulesScreen(this);
+		previousScreen = startScreen;
 		currentScreen = startScreen;
 		currentScreen.show();
 	}
@@ -78,6 +78,7 @@ public class Main extends Game {
 	public void render(){
 		delta = Gdx.graphics.getDeltaTime();
 		camera.update();
+		viewport.apply();
 		batch.setProjectionMatrix(camera.combined);
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -89,6 +90,8 @@ public class Main extends Game {
 		}
 		
 	}
+	
+	
 	@Override
 	public void resize(int width, int height){
 		viewport.update(width, height);

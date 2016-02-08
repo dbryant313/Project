@@ -12,7 +12,7 @@ public class StartScreen extends  AbstractScreen {
 	Button playGameButton;
 	Button aboutButton;
 	Button rulesButton;
-	Button closeButton;
+	Button exitButton;
 	
 	
 	public StartScreen(Main game) {
@@ -25,12 +25,18 @@ public class StartScreen extends  AbstractScreen {
 	}
 
 	void loadAssets() {
-		playGameButton = new Button(atlas.findRegion("playGameButton"), 
-				new Rectangle(140, 250, 120, 50));
-		aboutButton = new Button(atlas.findRegion("mainMenuButton"), 
-				new Rectangle(100, 300, 140, 50));
-		rulesButton = new Button(atlas.findRegion("playAgainButton"), 
-				new Rectangle(100, 200, 120, 50));
+		playGameButton = new Button(atlas.findRegion("PLAYBUTTON"),
+				atlas.findRegion("PLAYBUTTONSELECTED"), 
+				new Rectangle(gameInstance.WIDTH/2 - 60, 300, 140, 50));
+		aboutButton = new Button(atlas.findRegion("ABOUTBUTTON"),
+				atlas.findRegion("ABOUTBUTTONSELECTED"),
+				new Rectangle(gameInstance.WIDTH/2 - 60, 225, 140, 50));
+		rulesButton = new Button(atlas.findRegion("RULESBUTTON"),
+				atlas.findRegion("RULESBUTTONSELECTED"),
+				new Rectangle(gameInstance.WIDTH/2 - 60, 150, 140, 50));
+		exitButton = new Button(atlas.findRegion("EXITBUTTON"),
+				atlas.findRegion("EXITBUTTONSELECTED"),
+				new Rectangle(gameInstance.WIDTH/2 - 60, 75, 140, 50));
 
 	}
 	@Override
@@ -44,8 +50,9 @@ public class StartScreen extends  AbstractScreen {
 	@Override
 	public void render(float delta) {
 		playGameButton.draw(batch);
-		//creditsButton.draw(batch);
-		//helpButton.draw(batch);
+		aboutButton.draw(batch);
+		rulesButton.draw(batch);
+		exitButton.draw(batch);
 	}
 	
 	@Override
@@ -78,6 +85,7 @@ public class StartScreen extends  AbstractScreen {
 	@Override
 	public void dispose() {
 		System.out.println("Menu disposed!");
+		gameInstance.assetMgr.dispose();
 	}
 
 	// Override InputAdapter TouchUp
@@ -86,22 +94,68 @@ public class StartScreen extends  AbstractScreen {
 			input.x = screenX;
 			input.y = screenY;
 			
+			playGameButton.selected = false;
+			aboutButton.selected = false;
+			rulesButton.selected = false;
+			exitButton.selected = false;
+			
 			gameInstance.camera.unproject(input);
+			
 			if(playGameButton.colisionRect.contains(input.x, input.y)){
 				this.hide();
 				gameInstance.currentScreen = gameInstance.gameScreen;
 				gameInstance.currentScreen.show();
 			}
 			
+			if(aboutButton.colisionRect.contains(input.x, input.y)){
+				this.hide();
+				gameInstance.currentScreen = gameInstance.aboutScreen;
+				gameInstance.currentScreen.show();
+			}
+			
+			if(rulesButton.colisionRect.contains(input.x, input.y)){
+				this.hide();
+				gameInstance.currentScreen = gameInstance.rulesScreen;
+				gameInstance.currentScreen.show();
+			}
+			
+			if(exitButton.colisionRect.contains(input.x, input.y)){
+				dispose();
+				Gdx.app.exit();
+			}
+			
 		return true;
 	}
 
-	// Override InputAdapter TouchUp
+	// Override InputAdapter
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		input.x = screenX;
 		input.y = screenY;
 
 		gameInstance.camera.unproject(input);
+		if(playGameButton.colisionRect.contains(input.x, input.y)){
+			playGameButton.selected = true;
+		}else{
+			playGameButton.selected = false;
+		}
+		
+		if(aboutButton.colisionRect.contains(input.x, input.y)){
+			aboutButton.selected = true;
+		}else{
+			aboutButton.selected = false;
+		}
+		
+		if(rulesButton.colisionRect.contains(input.x, input.y)){
+			rulesButton.selected = true;
+		}else{
+			rulesButton.selected = false;
+		}
+		
+		if(exitButton.colisionRect.contains(input.x, input.y)){
+			exitButton.selected = true;
+		}else{
+			exitButton.selected = false;
+		}
 		
 		return true;
 	}

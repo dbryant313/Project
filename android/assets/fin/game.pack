@@ -1,68 +1,131 @@
 
 game.png
 format: RGBA8888
-filter: Linear,Linear
+filter: MipMap,MipMapLinearLinear
 repeat: none
+green
+  rotate: false
+  xy: 0, 1301
+  size: 400, 640
+  orig: 400, 640
+  offset: 0, 0
+  index: -1
+red
+  rotate: false
+  xy: 0, 660
+  size: 400, 640
+  orig: 400, 640
+  offset: 0, 0
+  index: -1
 blank
   rotate: false
-  xy: 0, 0
+  xy: 401, 1461
   size: 300, 480
   orig: 300, 480
   offset: 0, 0
   index: -1
 lizard
   rotate: false
-  xy: 301, 0
+  xy: 0, 179
   size: 300, 480
   orig: 300, 480
   offset: 0, 0
   index: -1
 paper
   rotate: false
-  xy: 602, 0
+  xy: 401, 980
   size: 300, 480
   orig: 300, 480
   offset: 0, 0
   index: -1
 rock
   rotate: false
-  xy: 903, 0
+  xy: 702, 1461
   size: 300, 480
   orig: 300, 480
   offset: 0, 0
   index: -1
 scissors
   rotate: false
-  xy: 1204, 0
+  xy: 702, 980
   size: 300, 480
   orig: 300, 480
   offset: 0, 0
   index: -1
 spock
   rotate: false
-  xy: 1505, 0
+  xy: 1003, 1461
   size: 300, 480
   orig: 300, 480
   offset: 0, 0
   index: -1
-mainMenuButton
+ABOUTBUTTON
   rotate: false
-  xy: 1806, 446
-  size: 195, 34
-  orig: 195, 34
+  xy: 401, 801
+  size: 380, 178
+  orig: 380, 178
   offset: 0, 0
   index: -1
-playAgainButton
+ABOUTBUTTONSELECTED
   rotate: false
-  xy: 1806, 406
-  size: 184, 39
-  orig: 184, 39
+  xy: 1304, 1763
+  size: 380, 178
+  orig: 380, 178
   offset: 0, 0
   index: -1
-playGameButton
+CLOSEBUTTON
   rotate: false
-  xy: 1806, 364
-  size: 172, 41
-  orig: 172, 41
+  xy: 1304, 1584
+  size: 380, 178
+  orig: 380, 178
+  offset: 0, 0
+  index: -1
+CLOSEBUTTONSELECTED
+  rotate: false
+  xy: 401, 622
+  size: 380, 178
+  orig: 380, 178
+  offset: 0, 0
+  index: -1
+EXITBUTTON
+  rotate: false
+  xy: 1304, 1405
+  size: 380, 178
+  orig: 380, 178
+  offset: 0, 0
+  index: -1
+EXITBUTTONSELECTED
+  rotate: false
+  xy: 0, 0
+  size: 380, 178
+  orig: 380, 178
+  offset: 0, 0
+  index: -1
+PLAYBUTTON
+  rotate: false
+  xy: 301, 443
+  size: 380, 178
+  orig: 380, 178
+  offset: 0, 0
+  index: -1
+PLAYBUTTONSELECTED
+  rotate: false
+  xy: 301, 264
+  size: 380, 178
+  orig: 380, 178
+  offset: 0, 0
+  index: -1
+RULESBUTTON
+  rotate: false
+  xy: 782, 801
+  size: 380, 178
+  orig: 380, 178
+  offset: 0, 0
+  index: -1
+RULESBUTTONSELECTED
+  rotate: false
+  xy: 782, 622
+  size: 380, 178
+  orig: 380, 178
   offset: 0, 0
   index: -1

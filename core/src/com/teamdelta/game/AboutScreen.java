@@ -3,13 +3,28 @@ package com.teamdelta.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector3;
 
 public class AboutScreen extends AbstractScreen{
 	Texture credits;
+	BitmapFont bigFont;
+	BitmapFont smallFont;
+	Button closeButton;
+	Vector3 input;
+	
 	
 	public AboutScreen(Main game) {
 		super(game);
-		Gdx.input.setInputProcessor(this);
+		input = new Vector3();
+		closeButton = new Button(atlas.findRegion("CLOSEBUTTON"),
+				atlas.findRegion("CLOSEBUTTONSELECTED"),
+				new Rectangle(gameInstance.WIDTH/2 - 60, 55, 120, 40));
+		
+		bigFont = new BitmapFont(Gdx.files.internal("calibri.fnt"));
+		smallFont = new BitmapFont(Gdx.files.internal("calibrismall.fnt"));
+		
 	}
 
 	@Override
@@ -20,7 +35,21 @@ public class AboutScreen extends AbstractScreen{
 
 	@Override
 	public void render(float delta) {
-		gameInstance.batch.draw(credits, 0, 0);
+		bigFont.draw(batch, "Rock Paper Scissors Lizrd Spock", 220, 600);
+		bigFont.draw(batch, "developed by Team Delta", 245, 570);
+		
+		smallFont.draw(batch, "Team Lead: ", 250, 500-20);
+		smallFont.draw(batch, "Jeffrey Kunert", 250, 480-20);
+		smallFont.draw(batch, "Project Manager: ", 250, 440-20);
+		smallFont.draw(batch, "Dennis Bryant", 250, 420-20);
+		smallFont.draw(batch, "Programming Lead: ", 250, 380-20);
+		smallFont.draw(batch, "Ismael Poteau", 250, 360-20);
+		smallFont.draw(batch, "UI design and QA", 250, 320-20);
+		smallFont.draw(batch, "Jacob Herritt", 250, 300-20);
+		smallFont.draw(batch, "William Warnock", 250, 280-20);
+		
+		closeButton.draw(batch);
+		
 	}
 
 	@Override
@@ -49,6 +78,7 @@ public class AboutScreen extends AbstractScreen{
 	}
 
 	void update(float timeSinceLastFrame) {
+		
 	}
 
 	@Override
@@ -65,14 +95,34 @@ public class AboutScreen extends AbstractScreen{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
-		return false;
+		input.x = screenX;
+		input.y = screenY;
+
+		gameInstance.camera.unproject(input);
+		if(closeButton.colisionRect.contains(input.x, input.y)){
+			closeButton.selected = true;
+		}else{
+			closeButton.selected = false;
+		}
+			
+		return true;
 	}
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
-		return false;
+		input.x = screenX;
+		input.y = screenY;
+
+		gameInstance.camera.unproject(input);
+		closeButton.selected = false;
+		
+		if(closeButton.colisionRect.contains(input.x, input.y)){
+			this.hide();
+			gameInstance.currentScreen = gameInstance.previousScreen;
+			gameInstance.previousScreen = gameInstance.currentScreen;
+			gameInstance.currentScreen.show();
+		}
+		return true;
 	}
 
 	@Override
