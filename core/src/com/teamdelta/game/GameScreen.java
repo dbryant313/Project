@@ -93,9 +93,11 @@ public class GameScreen extends AbstractScreen {
 	void renderScores() {
 		font.draw(batch, "Wins:  " + player.winScore, 50, 560);
 		font.draw(batch, "Losses:  " + player.loseScore, 50, 540);
+		font.draw(batch, "Ties:  " + player.tieScore, 50, 520); //Jeff Added Tie Score for cpu
 
 		font.draw(batch, "Wins:  " + cpu.winScore, 600, 560);
 		font.draw(batch, "Losses:  " + cpu.loseScore, 600, 540);
+		font.draw(batch, "Ties:  " + cpu.tieScore, 600, 520); //Jeff Added Tie Score for cpu
 
 	}
 
@@ -140,6 +142,8 @@ public class GameScreen extends AbstractScreen {
 				switch (cpu.choice) {
 				case ROCK:
 					isGameTied = true;
+					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
+					player.tiesScore ++; //Jeff Added tieScore for player
 					gameover = true;
 					break;
 				case PAPER:
@@ -180,6 +184,8 @@ public class GameScreen extends AbstractScreen {
 					break;
 				case PAPER:
 					isGameTied = true;
+					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
+					player.tiesScore ++; //Jeff Added tieScore for player
 					gameover = true;
 					break;
 				case SCISSORS:
@@ -220,6 +226,8 @@ public class GameScreen extends AbstractScreen {
 					break;
 				case SCISSORS:
 					isGameTied = true;
+					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
+					player.tiesScore ++; //Jeff Added tieScore for player
 					gameover = true;
 					break;
 				case LIZARD:
@@ -260,6 +268,8 @@ public class GameScreen extends AbstractScreen {
 					break;
 				case LIZARD:
 					isGameTied = true;
+					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
+					player.tiesScore ++; //Jeff Added tieScore for player
 					gameover = true;
 					break;
 				case SPOCK:
@@ -300,6 +310,8 @@ public class GameScreen extends AbstractScreen {
 					break;
 				case SPOCK:
 					isGameTied = true;
+					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
+					player.tiesScore ++; //Jeff Added tieScore for player
 					gameover = true;
 					break;
 				default:
