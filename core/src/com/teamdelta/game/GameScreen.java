@@ -15,7 +15,7 @@ public class GameScreen extends AbstractScreen {
 	Button spockButton;
 	Button aboutButton;
 	Button rulesButton;
-	Button closeButton;
+	Button closeButton;     
 	User player;
 	CPU cpu;
 	BitmapFont font;
