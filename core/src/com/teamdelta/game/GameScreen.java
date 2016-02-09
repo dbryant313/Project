@@ -15,7 +15,7 @@ public class GameScreen extends AbstractScreen {
 	Button spockButton;
 	Button aboutButton;
 	Button rulesButton;
-	Button exitButton;
+	Button closeButton;
 	User player;
 	CPU cpu;
 	BitmapFont font;
@@ -36,8 +36,8 @@ public class GameScreen extends AbstractScreen {
 		rulesButton = new Button(atlas.findRegion("RULESBUTTON"),
 				atlas.findRegion("RULESBUTTONSELECTED"), new Rectangle(350, 30,
 						100, 50));
-		exitButton = new Button(atlas.findRegion("EXITBUTTON"),
-				atlas.findRegion("EXITBUTTONSELECTED"), new Rectangle(450, 30,
+		closeButton = new Button(atlas.findRegion("CLOSEBUTTON"),
+				atlas.findRegion("CLOSEBUTTONSELECTED"), new Rectangle(450, 30,
 						100, 50));
 
 		rockButton = new Button(atlas.findRegion("rock"),
@@ -87,7 +87,7 @@ public class GameScreen extends AbstractScreen {
 		spockButton.draw(batch);
 		aboutButton.draw(batch);
 		rulesButton.draw(batch);
-		exitButton.draw(batch);
+		closeButton.draw(batch);
 	}
 
 	void renderScores() {
@@ -358,7 +358,7 @@ public class GameScreen extends AbstractScreen {
 
 		aboutButton.selected = false;
 		rulesButton.selected = false;
-		exitButton.selected = false;
+		closeButton.selected = false;
 
 		gameInstance.camera.unproject(input);
 
@@ -376,9 +376,11 @@ public class GameScreen extends AbstractScreen {
 			gameInstance.currentScreen.show();
 		}
 
-		if (exitButton.colisionRect.contains(input.x, input.y)) {
-			dispose();
-			Gdx.app.exit();
+		if (closeButton.colisionRect.contains(input.x, input.y)) {
+			this.hide();
+			gameInstance.currentScreen = gameInstance.startScreen;
+			gameInstance.previousScreen = gameInstance.currentScreen;
+			gameInstance.currentScreen.show();
 		}
 
 		if (player.turnToPlay) {
@@ -438,10 +440,10 @@ public class GameScreen extends AbstractScreen {
 			rulesButton.selected = false;
 		}
 
-		if (exitButton.colisionRect.contains(input.x, input.y)) {
-			exitButton.selected = true;
+		if (closeButton.colisionRect.contains(input.x, input.y)) {
+			closeButton.selected = true;
 		} else {
-			exitButton.selected = false;
+			closeButton.selected = false;
 		}
 
 		if (player.turnToPlay) {
