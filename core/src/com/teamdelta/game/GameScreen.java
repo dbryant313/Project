@@ -7,6 +7,17 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.teamdelta.game.AbstractEntity.Choices;
 
+/**
+ * 
+ * @author Ismeal
+ * @version 1.0.0.0
+ * @since 2/9/16
+ * 
+ * The GameScreen class controls the game play and statistics display.
+ * 
+ * 2/9/16 - Fixed tieScore spelling errors - Dennis
+ * 
+ */
 public class GameScreen extends AbstractScreen {
 	Button rockButton;
 	Button paperButton;
@@ -143,7 +154,7 @@ public class GameScreen extends AbstractScreen {
 				case ROCK:
 					isGameTied = true;
 					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
-					player.tiesScore ++; //Jeff Added tieScore for player
+					player.tieScore ++; //Jeff Added tieScore for player
 					gameover = true;
 					break;
 				case PAPER:
@@ -185,7 +196,7 @@ public class GameScreen extends AbstractScreen {
 				case PAPER:
 					isGameTied = true;
 					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
-					player.tiesScore ++; //Jeff Added tieScore for player
+					player.tieScore ++; //Jeff Added tieScore for player
 					gameover = true;
 					break;
 				case SCISSORS:
@@ -227,7 +238,7 @@ public class GameScreen extends AbstractScreen {
 				case SCISSORS:
 					isGameTied = true;
 					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
-					player.tiesScore ++; //Jeff Added tieScore for player
+					player.tieScore ++; //Jeff Added tieScore for player
 					gameover = true;
 					break;
 				case LIZARD:
@@ -269,7 +280,7 @@ public class GameScreen extends AbstractScreen {
 				case LIZARD:
 					isGameTied = true;
 					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
-					player.tiesScore ++; //Jeff Added tieScore for player
+					player.tieScore ++; //Jeff Added tieScore for player
 					gameover = true;
 					break;
 				case SPOCK:
@@ -311,7 +322,7 @@ public class GameScreen extends AbstractScreen {
 				case SPOCK:
 					isGameTied = true;
 					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
-					player.tiesScore ++; //Jeff Added tieScore for player
+					player.tieScore ++; //Jeff Added tieScore for player
 					gameover = true;
 					break;
 				default:
