@@ -26,7 +26,8 @@ public class GameScreen extends AbstractScreen {
 	Button spockButton;
 	Button aboutButton;
 	Button rulesButton;
-	Button closeButton;     
+	Button closeButton;
+	Button playAgainButton;
 	User player;
 	CPU cpu;
 	BitmapFont font;
@@ -49,6 +50,10 @@ public class GameScreen extends AbstractScreen {
 						100, 50));
 		closeButton = new Button(atlas.findRegion("CLOSEBUTTON"),
 				atlas.findRegion("CLOSEBUTTONSELECTED"), new Rectangle(450, 30,
+						100, 50));
+		//Ismael added playAgainButton
+		playAgainButton = new Button(atlas.findRegion("PLAYBUTTON"),
+				atlas.findRegion("PLAYBUTTONSELECTED"), new Rectangle(350, 155,
 						100, 50));
 
 		rockButton = new Button(atlas.findRegion("rock"),
@@ -99,6 +104,10 @@ public class GameScreen extends AbstractScreen {
 		aboutButton.draw(batch);
 		rulesButton.draw(batch);
 		closeButton.draw(batch);
+		//Ismael added render playAgainButton when game is over
+		if(gameover){
+			playAgainButton.draw(batch);
+		}
 	}
 
 	void renderScores() {
@@ -131,6 +140,7 @@ public class GameScreen extends AbstractScreen {
 			font.draw(batch, "CPU chose: " + cpu.choice.toString(), 600, 600);
 		}
 		if(gameover){
+			font.draw(batch, "Play Again?", 355, 230);//Ismael added play again message when game is over
 			if(isGameTied){
 				font.draw(batch, "Game is tied", 320, 620);
 			}
@@ -382,6 +392,7 @@ public class GameScreen extends AbstractScreen {
 		aboutButton.selected = false;
 		rulesButton.selected = false;
 		closeButton.selected = false;
+		playAgainButton.selected = false;
 
 		gameInstance.camera.unproject(input);
 
@@ -404,6 +415,12 @@ public class GameScreen extends AbstractScreen {
 			gameInstance.currentScreen = gameInstance.startScreen;
 			gameInstance.previousScreen = gameInstance.currentScreen;
 			gameInstance.currentScreen.show();
+		}
+		//Ismael added functionality to playAgainButton to reset game state
+		if(gameover){
+				if (playAgainButton.colisionRect.contains(input.x, input.y)) {
+				resetGameState();
+			}
 		}
 
 		if (player.turnToPlay) {
@@ -444,6 +461,17 @@ public class GameScreen extends AbstractScreen {
 		return true;
 	}
 
+	private void resetGameState() {
+		gameover = false;
+		player.turnToPlay = true;
+		cpu.turnToPlay = false;
+		playerTookTurn = false;
+		cpuTookTurn = false;
+		isCPUWin = false;
+		isGameTied = false;
+		isPlayerWin = false;
+	}
+
 	// Override InputAdapter TouchUp
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		input.x = screenX;
@@ -467,6 +495,12 @@ public class GameScreen extends AbstractScreen {
 			closeButton.selected = true;
 		} else {
 			closeButton.selected = false;
+		}
+		
+		if (playAgainButton.colisionRect.contains(input.x, input.y)) {
+			playAgainButton.selected = true;
+		} else {
+			playAgainButton.selected = false;
 		}
 
 		if (player.turnToPlay) {
