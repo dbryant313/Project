@@ -450,7 +450,7 @@ public class GameScreen extends AbstractScreen {
 				cpu.turnToPlay = true;
 			}
 			if (spockButton.colisionRect.contains(input.x, input.y)) {
-				player.choice = Choices.LIZARD;
+				player.choice = Choices.SPOCK;
 				playerTookTurn = true;
 				player.turnToPlay = false;
 				cpu.turnToPlay = true;
