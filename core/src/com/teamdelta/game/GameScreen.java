@@ -56,16 +56,16 @@ public class GameScreen extends AbstractScreen {
 				atlas.findRegion("PLAYBUTTONSELECTED"), new Rectangle(350, 155,
 						100, 50));
 
-		rockButton = new Button(atlas.findRegion("rock"),
-				atlas.findRegion("rock"), new Rectangle(50, 350, 100, 150));
-		paperButton = new Button(atlas.findRegion("paper"),
-				atlas.findRegion("paper"), new Rectangle(650, 350, 100, 150));
-		scissorsButton = new Button(atlas.findRegion("scissors"),
-				atlas.findRegion("scissors"), new Rectangle(50, 150, 100, 150));
-		lizardButton = new Button(atlas.findRegion("lizard"),
-				atlas.findRegion("lizard"), new Rectangle(650, 150, 100, 150));
-		spockButton = new Button(atlas.findRegion("spock"),
-				atlas.findRegion("spock"), new Rectangle(350, 275, 100, 150));
+		rockButton = new Button(atlas.findRegion("missingRock"),
+				atlas.findRegion("missingRock"), new Rectangle(50, 350, 100, 150));
+		paperButton = new Button(atlas.findRegion("missingPaper"),
+				atlas.findRegion("missingPaper"), new Rectangle(650, 350, 100, 150));
+		scissorsButton = new Button(atlas.findRegion("missingScissors"),
+				atlas.findRegion("missingScissors"), new Rectangle(50, 150, 100, 150));
+		lizardButton = new Button(atlas.findRegion("missingLizard"),
+				atlas.findRegion("missingLizard"), new Rectangle(650, 150, 100, 150));
+		spockButton = new Button(atlas.findRegion("missingSpock"),
+				atlas.findRegion("missingSpock"), new Rectangle(350, 275, 100, 150));
 	}
 
 	@Override

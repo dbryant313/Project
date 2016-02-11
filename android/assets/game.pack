@@ -1,3 +1,62 @@
+rock_missing.png
+format: RGBA8888
+filter: MipMap,MipMapLinearLinear
+repeat: none
+missingRock
+  rotate: false
+  xy: 0, 0
+  size: 329, 479
+  orig: 329, 479
+  offset: 0, 0
+  index: -1
+
+paper_missing.png
+format: RGBA8888
+filter: MipMap,MipMapLinearLinear
+repeat: none
+missingPaper
+  rotate: false
+  xy: 0, 0
+  size: 329, 479
+  orig: 329, 479
+  offset: 0, 0
+  index: -1
+
+scissors_missing.png
+format: RGBA8888
+filter: MipMap,MipMapLinearLinear
+repeat: none
+missingScissors
+  rotate: false
+  xy: 0, 0
+  size: 329, 479
+  orig: 329, 479
+  offset: 0, 0
+  index: -1
+
+lizard_missing.png
+format: RGBA8888
+filter: MipMap,MipMapLinearLinear
+repeat: none
+missingLizard
+  rotate: false
+  xy: 0, 0
+  size: 329, 479
+  orig: 329, 479
+  offset: 0, 0
+  index: -1
+
+spock_missing.png
+format: RGBA8888
+filter: MipMap,MipMapLinearLinear
+repeat: none
+missingSpock
+  rotate: false
+  xy: 0, 0
+  size: 329, 479
+  orig: 329, 479
+  offset: 0, 0
+  index: -1
 
 game.png
 format: RGBA8888
